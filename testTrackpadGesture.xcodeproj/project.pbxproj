@@ -15,6 +15,7 @@
 		1A8006E724652BD0007B8EB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A8006E524652BD0007B8EB9 /* LaunchScreen.storyboard */; };
 		1A8006F224652BD0007B8EB9 /* testTrackpadGestureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8006F124652BD0007B8EB9 /* testTrackpadGestureTests.swift */; };
 		1A8006FD24652BD0007B8EB9 /* testTrackpadGestureUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8006FC24652BD0007B8EB9 /* testTrackpadGestureUITests.swift */; };
+		1A80070B24652C92007B8EB9 /* TrackpadInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A80070A24652C92007B8EB9 /* TrackpadInteraction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		1A8006F824652BD0007B8EB9 /* testTrackpadGestureUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = testTrackpadGestureUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A8006FC24652BD0007B8EB9 /* testTrackpadGestureUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testTrackpadGestureUITests.swift; sourceTree = "<group>"; };
 		1A8006FE24652BD0007B8EB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1A80070A24652C92007B8EB9 /* TrackpadInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackpadInteraction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				1A8006DA24652BCE007B8EB9 /* AppDelegate.swift */,
 				1A8006DC24652BCE007B8EB9 /* SceneDelegate.swift */,
 				1A8006DE24652BCE007B8EB9 /* ViewController.swift */,
+				1A80070A24652C92007B8EB9 /* TrackpadInteraction.swift */,
 				1A8006E024652BCE007B8EB9 /* Main.storyboard */,
 				1A8006E324652BD0007B8EB9 /* Assets.xcassets */,
 				1A8006E524652BD0007B8EB9 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				1A8006DF24652BCE007B8EB9 /* ViewController.swift in Sources */,
 				1A8006DB24652BCE007B8EB9 /* AppDelegate.swift in Sources */,
+				1A80070B24652C92007B8EB9 /* TrackpadInteraction.swift in Sources */,
 				1A8006DD24652BCE007B8EB9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
