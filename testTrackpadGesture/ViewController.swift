@@ -35,8 +35,8 @@ extension ViewController: TrackpadInteractionDelegate {
         Swift.print("TTT velocity \(didPan.state) \(didPan.velocity(in: nil)) \(didPan.translation(in: nil))")
     }
 
-    func trackpadDidTap(_ interaction: TrackpadInteraction) {
-        Swift.print("TTT trackpadDidTap")
+    func trackpadDidCancelPan(_ interaction: TrackpadInteraction) {
+        Swift.print("TTT trackpadDidCancelPan")
     }
 }
 

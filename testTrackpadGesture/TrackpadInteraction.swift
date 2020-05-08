@@ -9,7 +9,7 @@
 import UIKit
 
 protocol TrackpadInteractionDelegate: class {
-    func trackpadDidTap(_ interaction: TrackpadInteraction)
+    func trackpadDidCancelPan(_ interaction: TrackpadInteraction)
     func trackpad(_ interaction: TrackpadInteraction, didPan: UIPanGestureRecognizer)
 }
 
@@ -20,8 +20,6 @@ class TrackpadInteraction: NSObject, UIInteraction {
     private let scrollView: UIScrollView
 
     override init() {
-//        panGestureRecognizer = .init()
-
         scrollView = UIScrollView(frame: CGRect.zero)
 
         // allow bounce so it enables the scroll events regardless of it's contentSize
@@ -35,12 +33,12 @@ class TrackpadInteraction: NSObject, UIInteraction {
         panGestureRecognizer = scrollView.panGestureRecognizer
 
         super.init()
-        scrollView.delegate = self
 
-        panGestureRecognizer.minimumNumberOfTouches = 2
-        panGestureRecognizer.allowedScrollTypesMask = .continuous
-        let allowedTypes: [NSNumber] = [NSNumber(value: UITouch.TouchType.indirect.rawValue), NSNumber(value: UITouch.TouchType.indirectPointer.rawValue)]
-        panGestureRecognizer.allowedTouchTypes = allowedTypes
+        if #available(iOS 13.4, *) {
+            panGestureRecognizer.allowedScrollTypesMask = .continuous
+            let allowedTypes: [NSNumber] = [NSNumber(value: UITouch.TouchType.indirect.rawValue), NSNumber(value: UITouch.TouchType.indirectPointer.rawValue)]
+            panGestureRecognizer.allowedTouchTypes = allowedTypes
+        }
     }
 
     func willMove(to view: UIView?) {
@@ -54,14 +52,29 @@ class TrackpadInteraction: NSObject, UIInteraction {
     }
 
     @objc func handlePanGestureRecognizer(_ gesture: UIPanGestureRecognizer) {
-        Swift.print("TTT gesture \(String(reflecting: gesture.state))")
+        guard gesture.state != .cancelled else {
+            // on Mac this will trigger properly, not on iPadOS
+            // I am not aware of any no workaround for now
+            delegate?.trackpadDidCancelPan(self)
+            return
+        }
+
         delegate?.trackpad(self, didPan: gesture)
     }
-
 }
 
-extension TrackpadInteraction: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        delegate?.trackpadDidTap(self)
+extension UIGestureRecognizer.State: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .began: return "began"
+        case .cancelled: return "cancelled"
+        case .possible: return "possible"
+        case .ended: return "ended"
+        case .recognized: return "recognized"
+        case .failed: return "failed"
+        case .changed: return "changed"
+        @unknown default:
+            return "unknown"
+        }
     }
 }
