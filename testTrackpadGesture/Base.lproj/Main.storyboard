@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,133 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="testTrackpadGesture" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="h5x-4b-n23">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <mutableString key="text">Skip Navigation
+Documentation
+⋯
+App Services
+UIApplicationSupportsIndirectInputEvents
+Language:
+
+API Changes:
+Show
+Property List Key
+UIApplicationSupportsIndirectInputEvents
+A Boolean value indicating that the app generally supports indirect input mechanisms.
+
+SDK
+
+iOS 13.4+
+Framework
+
+UIKit
+On This Page
+
+Details
+Discussion
+Details
+Type
+Boolean
+Discussion
+If this key is not present or returns NO:
+
+When the user clicks an indirect pointing device, UIKit generates a UITouch of type UITouch.TouchType.direct.
+
+When pinching or rotating using an indirect touch surface, UIKit creates touches a fixed distance apart that simulate the gesture on the indirect touch surface.
+
+Because these are normal UITouch events, they may incidentally activate other gesture recognizers
+
+If the key is present and returns YES:
+
+When the user clicks an indirect pointing device, UIKit generates a UITouch of type UITouch.TouchType.indirectPointer.
+
+When pinching or rotating using an indirect touch surface, UIKit drives UIPinchGestureRecognizer and UIRotationGestureRecognizer with an event of type UIEvent.EventType.transform.
+
+Currently, only certain prepackaged gestures in UIKit, like UIPinchGestureRecognizer and UIRotationGestureRecognizer, are capable of handling this event. Other gestures may be added to this list in future releases.
+
+Gestures that may have worked previously with the simulated touches no longer work.
+
+Be careful with certain UIGestureRecognizer APIs when gestures are driven by events of type UIEvent.EventType.scroll or UIEvent.EventType.transform. numberOfTouches returns 0, and location(ofTouch:in:) raises an exception because there are no touches driving these gestures with those events.
+
+For the case when exceptions might be raised, use either shouldReceive(_:) or the delegate call of gestureRecognizer(_:shouldReceive:) to determine that gesture recognizers are acting on a non-touch-based event.
+
+Important
+
+UIApplicationSupportsIndirectInputEvents is a compatibility affordance to ease the adoption of indirect input for a UIKit application. In a future release, this new behavior will become the default and this key will no longer be consulted.
+
+Developer 
+Documentation
+Discover
+macOS
+iOS
+watchOS
+tvOS
+Safari and Web
+Games
+Business
+Education
+WWDC
+Design
+Human Interface Guidelines
+Resources
+Videos
+Apple Design Awards
+Accessibility
+Internationalization
+Accessories
+Develop
+Xcode
+Swift
+Swift Playgrounds
+TestFlight
+Documentation
+Videos
+Downloads
+Distribute
+Developer Program
+App Store
+App Review
+Mac Software
+Apps for Business
+Safari Extensions
+Marketing Resources
+Trademark Licensing
+Support
+Developer Forums
+Bug Reporting
+License Agreements
+System Status
+Contact Us
+Account
+Certificates, IDs &amp; Profiles
+App Store Connect
+To receive the latest developer news, visit and subscribe to our News and Updates.
+Copyright © 2020 Apple Inc. All rights reserved. Terms of Use Privacy Policy Report Bugs Feedback简体中文 日本語 한국어</mutableString>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h5x-4b-n23" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4JP-G4-2Yv"/>
+                            <constraint firstItem="h5x-4b-n23" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="b11-68-98P"/>
+                            <constraint firstAttribute="bottom" secondItem="h5x-4b-n23" secondAttribute="bottom" id="cxr-B3-Snf"/>
+                            <constraint firstItem="h5x-4b-n23" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="mCG-lb-IOl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>
