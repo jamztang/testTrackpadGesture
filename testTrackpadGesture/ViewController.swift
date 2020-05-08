@@ -8,6 +8,12 @@
 
 import UIKit
 
+class TrackingView: UIView {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        Swift.print("TTT touchBegin")
+    }
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet var textView: UITextView!
@@ -24,9 +30,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: TrackpadInteractionDelegate {
-    func trackpadDidPan(_ panGesture: UIPanGestureRecognizer) {
-        Swift.print("TTT velocity \(panGesture.velocity(in: nil)) \(panGesture.translation(in: nil))")
 
+    func trackpad(_ interaction: TrackpadInteraction, didPan: UIPanGestureRecognizer) {
+        Swift.print("TTT velocity \(didPan.state) \(didPan.velocity(in: nil)) \(didPan.translation(in: nil))")
+    }
+
+    func trackpadDidTap(_ interaction: TrackpadInteraction) {
+        Swift.print("TTT trackpadDidTap")
     }
 }
 
