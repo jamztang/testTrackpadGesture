@@ -32,11 +32,15 @@ class ViewController: UIViewController {
 extension ViewController: TrackpadInteractionDelegate {
 
     func trackpad(_ interaction: TrackpadInteraction, didPan: UIPanGestureRecognizer) {
-        Swift.print("TTT velocity \(didPan.state) \(didPan.velocity(in: nil)) \(didPan.translation(in: nil))")
+//        Swift.print("TTT velocity \(didPan.state) \(didPan.velocity(in: nil)) \(didPan.translation(in: nil))")
     }
 
-    func trackpadDidCancelPan(_ interaction: TrackpadInteraction) {
-        Swift.print("TTT trackpadDidCancelPan")
+    func trackpadDidStartScrolling(_ interaction: TrackpadInteraction) {
+        Swift.print("TTT trackpadDidStartScrolling")
+    }
+
+    func trackpadDidCancelScrolling(_ interaction: TrackpadInteraction) {
+        Swift.print("TTT trackpadDidCancelScrolling")
     }
 }
 

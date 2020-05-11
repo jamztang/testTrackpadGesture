@@ -9,7 +9,8 @@
 import UIKit
 
 protocol TrackpadInteractionDelegate: class {
-    func trackpadDidCancelPan(_ interaction: TrackpadInteraction)
+    func trackpadDidCancelScrolling(_ interaction: TrackpadInteraction)
+    func trackpadDidStartScrolling(_ interaction: TrackpadInteraction)
     func trackpad(_ interaction: TrackpadInteraction, didPan: UIPanGestureRecognizer)
 }
 
@@ -55,8 +56,12 @@ class TrackpadInteraction: NSObject, UIInteraction {
         guard gesture.state != .cancelled else {
             // on Mac this will trigger properly, not on iPadOS
             // I am not aware of any no workaround for now
-            delegate?.trackpadDidCancelPan(self)
+            delegate?.trackpadDidCancelScrolling(self)
             return
+        }
+
+        if gesture.state == .began {
+            delegate?.trackpadDidStartScrolling(self)
         }
 
         delegate?.trackpad(self, didPan: gesture)
