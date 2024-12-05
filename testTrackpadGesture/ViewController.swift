@@ -25,8 +25,22 @@ class ViewController: UIViewController {
 
         view.addInteraction(trackpadInteraction)
         trackpadInteraction.delegate = self
+
+        textView.panGestureRecognizer.addTarget(self, action: #selector(handlePanGestureRecognizer))
     }
 
+    @objc func handlePanGestureRecognizer(_ gesture: UIPanGestureRecognizer) {
+        guard gesture.state != .cancelled else {
+            // on Mac this will trigger properly, not on iPadOS
+            // I am not aware of any no workaround for now
+            Swift.print("TTT cancel scrolling")
+            return
+        }
+
+        if gesture.state == .began {
+            Swift.print("TTT started scrolling")
+        }
+    }
 }
 
 extension ViewController: TrackpadInteractionDelegate {
@@ -43,4 +57,3 @@ extension ViewController: TrackpadInteractionDelegate {
         Swift.print("TTT trackpadDidCancelScrolling")
     }
 }
-
